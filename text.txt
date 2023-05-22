@@ -1,0 +1,74 @@
+ async (imageUrl) => {
+            try {
+              const docRef = await addDoc(collection(db, "products"), {
+                name: name,
+                price: price,
+                category: category,
+                image: imageUrl,
+                userID: user.uid,
+                discription: discription,
+                shortDetail: shortDetail,
+                createdAt: date.toDateString(),
+              });
+              console.log("Document written with ID: ", docRef.id);
+            } catch (e) {
+              console.error("Error adding document: ", e);
+            }
+          }
+
+          /******************************
+
+
+           async  function imageUplad(){
+     for(let i =0;i<image.length;i++) {
+        const storageRef = ref(storage, `/images/${image[i].name}`);
+        const uploadTask = uploadBytesResumable(storageRef, image[i]);
+
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const percent = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            ); // update progress
+            setPercent(percent);
+          },
+          (err) => console.log(err),
+          () => {
+            // download url
+            getDownloadURL(uploadTask.snapshot.ref).then((imageUrl) => {
+              setImageUrls((previousImage) => [...previousImage, imageUrl]);
+            }).then(()=>{
+             return console.log('compleat');
+            })
+          }
+        );
+      
+    }
+
+    
+  }
+  imageUplad().then(()=>{
+    uplodeFirebase()
+  })
+
+  const uplodeFirebase =  async () => {
+      try {
+        // const docRef = await addDoc(collection(db, "products"), {
+        //   name: name,
+        //   price: price,
+        //   category: category,
+        //   image: imageUrls,
+        //   userID: user.uid,
+        //   discription: discription,
+        //   shortDetail: shortDetail,
+        //   createdAt: date.toDateString(),
+        // });
+        // console.log("Document written with ID: ", docRef.id);
+        // setImageUrls([])
+
+        console.log('upload to fire base');
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+    setUpload(false)
