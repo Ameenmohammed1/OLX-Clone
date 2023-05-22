@@ -110,9 +110,9 @@ const userID = sign.user.uid; // userinte id edutu veykum
           />
           <br />
           <br />
-          <button>Signup</button>
+          <button onClick={()=>handleSubmit()}>Signup</button>
+          <button onClick={()=>navigate('/login')}>Log In</button>
         </form>
-        <a>Login</a>
       </div>
     </div>
   );

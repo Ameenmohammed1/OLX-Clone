@@ -32,7 +32,7 @@ const [search,setSearch] = useState('')
 
  const login = ()=>{
   if(user){
-     return <span onClick={()=>{handleClick()}} style={{cursor:'pointer'}}>Hello {user.displayName}</span>
+     return <p onClick={()=>{handleClick()}} style={{cursor:'pointer'}}>Hello {user.displayName}</p>
   }else{
     return <span style={{cursor:'pointer'}} onClick={()=>navigate('login')}>Login</span>
   }
